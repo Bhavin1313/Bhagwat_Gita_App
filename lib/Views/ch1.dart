@@ -79,8 +79,8 @@ class _CH1State extends State<CH1> {
                     child: Container(
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(
-                        left: 15,
-                        right: 15,
+                        left: 22,
+                        right: 22,
                         top: 10,
                         bottom: 10,
                       ),
@@ -95,6 +95,9 @@ class _CH1State extends State<CH1> {
                       ),
                       child: Row(
                         children: [
+                          SizedBox(
+                            width: 10,
+                          ),
                           Text(
                             "${allData[i].verse}",
                             style: TextStyle(
@@ -103,7 +106,7 @@ class _CH1State extends State<CH1> {
                                 fontSize: 15),
                           ),
                           SizedBox(
-                            width: 13,
+                            width: 10,
                           ),
                           Center(
                             child: SingleChildScrollView(
