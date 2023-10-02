@@ -25,29 +25,46 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future: rootBundle.loadString("gita_all_chapter.json"),
         builder: (ctx, snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          } else if (snapshot.hasData) {
             List DecodeData = jsonDecode(snapshot.data!);
             List<AllChapterModel> allData =
                 DecodeData.map((e) => AllChapterModel.fromMap(data: e))
                     .toList();
             return ListView.builder(
-                itemCount: allData.length,
-                itemBuilder: (ctx, i) {
-                  Card(
-                    child: ListTile(
-                      title: Text(
-                        "${allData[i].nameHindi}",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                      subtitle: Text("${allData.length}"),
-                      leading: Text("${allData[i].chapterNo}"),
+              itemCount: allData.length,
+              itemBuilder: (ctx, i) => Card(
+                child: ListTile(
+                  title: Text(
+                    "${allData[i].nameHindi}",
+                    style: TextStyle(
+                      color: Colors.black,
                     ),
-                  );
-                });
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+                  ),
+                  subtitle: Text("Verses : ${allData[i].versesCount}"),
+                  leading: Text("${allData[i].chapterNo}"),
+                  trailing: IconButton(
+                      icon: Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+                        AllChapterModel a = AllChapterModel(
+                            chapterNo: allData[i].chapterNo,
+                            chapterSummaryEnglish:
+                                allData[i].chapterSummaryEnglish,
+                            chapterSummaryHindi: allData[i].chapterSummaryHindi,
+                            id: allData[i].id,
+                            imageName: allData[i].imageName,
+                            jsonPath: allData[i].jsonPath,
+                            nameHindi: allData[i].nameHindi,
+                            nameMeaning: allData[i].nameMeaning,
+                            nameTranslationEnglish:
+                                allData[i].nameTranslationEnglish,
+                            versesCount: allData[i].versesCount);
+                        Navigator.pushNamed(context, 'dhome', arguments: a);
+                      }),
+                ),
+              ),
+            );
           }
 
           return Center(

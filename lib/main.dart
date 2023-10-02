@@ -2,6 +2,8 @@ import 'package:departure/Views/homepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Views/dhome.dart';
+
 void main() {
   runApp(
     MaterialApp(
@@ -11,6 +13,7 @@ void main() {
       ),
       routes: {
         '/': (context) => HomePage(),
+        'dhome': (context) => Dhome(),
       },
     ),
   );
