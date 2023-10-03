@@ -1,16 +1,12 @@
-# departure
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_20231003_111551](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/2372d5ee-96fa-47fc-a7ac-4b48f8fff376)
+![Screenshot_20231003_111537](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/e2a65bce-de82-40cb-b4af-a93395b29a2c)
+![Screenshot_20231003_111528](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/07293fd3-f75b-4b75-84b3-c7574e15ad99)
+![Screenshot_20231003_111518](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/368fde4f-c46c-4686-a28a-9be7afaed994)
+![Screenshot_20231003_111739](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/494851e9-8809-4994-b930-cb3ce7d3cc9d)
+![Screenshot_20231003_111713](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/a1947fc7-3ca0-4bd3-94c5-b0650908755e)
+![Screenshot_20231003_111703](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/5ba990c8-6748-4d3a-991d-e1c8b7ab2661)
+![Screenshot_20231003_111651](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/45366cd9-d636-43ee-9bb4-3e9bb59c2809)
+![Screenshot_20231003_111643](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/6e552f8e-64b2-4e9c-bb41-ab07b76bbfb9)
+![Screenshot_20231003_111633](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/cea8f486-68b0-4874-a495-c1b2f2ad6f7d)
+![Screenshot_20231003_111622](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/adf7503a-19aa-4f8a-ad7f-b31a5ddf098f)
+![Screenshot_20231003_111603](https://github.com/Bhavin1313/Departure_PR_4/assets/99348404/1f649759-c5bd-4585-a054-702dcd813123)
