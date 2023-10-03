@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../Model/all_chapter_moddel.dart';
+import '../Provider/theamprovider.dart';
 
 class Dhome extends StatefulWidget {
   const Dhome({super.key});
@@ -66,9 +68,15 @@ class _DhomeState extends State<Dhome> {
                       flex: 2,
                       child: GestureDetector(
                         onTap: () {},
-                        child: Icon(
-                          Icons.list_outlined,
-                          color: Colors.white,
+                        child: Switch(
+                          value:
+                              Provider.of<TheamProvider>(context, listen: true)
+                                  .theamChange
+                                  .isDark,
+                          onChanged: (val) {
+                            Provider.of<TheamProvider>(context, listen: false)
+                                .ChangeTheam();
+                          },
                         ),
                       ),
                     ),

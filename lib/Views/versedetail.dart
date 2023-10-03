@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../Model/chapter_model.dart';
+import '../Provider/theamprovider.dart';
 
 class VDetail extends StatefulWidget {
   const VDetail({super.key});
@@ -10,6 +12,8 @@ class VDetail extends StatefulWidget {
 }
 
 class _VDetailState extends State<VDetail> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     ChapterModel data =
@@ -56,9 +60,15 @@ class _VDetailState extends State<VDetail> {
                       flex: 2,
                       child: GestureDetector(
                         onTap: () {},
-                        child: Icon(
-                          Icons.list_outlined,
-                          color: Colors.white,
+                        child: Switch(
+                          value:
+                              Provider.of<TheamProvider>(context, listen: true)
+                                  .theamChange
+                                  .isDark,
+                          onChanged: (val) {
+                            Provider.of<TheamProvider>(context, listen: false)
+                                .ChangeTheam();
+                          },
                         ),
                       ),
                     ),
@@ -75,21 +85,23 @@ class _VDetailState extends State<VDetail> {
                     bottom: 10,
                   ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 200,
-                        width: 300,
+                        height: 120,
+                        width: 350,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("${data.gujarati}"),
-                          ),
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.white70,
                         ),
-                        child: Text(
-                          "${data.sanskrit}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
+                        child: Center(
+                          child: Text(
+                            "${data.sanskrit}",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ),
@@ -97,30 +109,84 @@ class _VDetailState extends State<VDetail> {
                         height: 10,
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
                         height: 70,
                         width: 350,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
                           color: Colors.white70,
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Name Meaning",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 0;
+                                  });
+                                },
+                                child: Expanded(
+                                  child: Center(
+                                    child: Text(
+                                      "English",
+                                      style: TextStyle(
+                                        color: (index == 0)
+                                            ? Colors.blue
+                                            : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
-                              Text(
-                                "${data.hindi}",
-                                overflow: TextOverflow.fade,
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 1;
+                                  });
+                                },
+                                child: Expanded(
+                                  child: Center(
+                                    child: Text(
+                                      "Hindi",
+                                      style: TextStyle(
+                                        color: (index == 1)
+                                            ? Colors.blue
+                                            : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ],
-                          ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 2;
+                                  });
+                                },
+                                child: Expanded(
+                                  child: Center(
+                                    child: Text(
+                                      "Gujrati",
+                                      style: TextStyle(
+                                        color: (index == 2)
+                                            ? Colors.blue
+                                            : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
@@ -128,29 +194,32 @@ class _VDetailState extends State<VDetail> {
                       ),
                       Container(
                         padding: EdgeInsets.all(10),
-                        height: 300,
+                        height: 150,
                         width: 350,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
                           color: Colors.white70,
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Summary",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        child: IndexedStack(
+                          index: index,
+                          children: [
+                            Center(
+                              child: Text("${data.english}",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            Center(
+                              child: Text("${data.hindi}",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            Center(
+                              child: Text(
+                                "${data.gujarati}",
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
-                              Text(
-                                "${data.english}",
-                                overflow: TextOverflow.fade,
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

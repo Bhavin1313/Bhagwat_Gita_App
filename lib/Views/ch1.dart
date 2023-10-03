@@ -2,9 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '../Model/all_chapter_moddel.dart';
 import '../Model/chapter_model.dart';
+import '../Model/shlokchangemodel.dart';
+import '../Provider/theamprovider.dart';
 
 class CH1 extends StatefulWidget {
   const CH1({super.key});
@@ -14,6 +17,7 @@ class CH1 extends StatefulWidget {
 }
 
 class _CH1State extends State<CH1> {
+  int? i;
   @override
   Widget build(BuildContext context) {
     AllChapterModel data1 =
@@ -35,6 +39,16 @@ class _CH1State extends State<CH1> {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
+        actions: [
+          Switch(
+            value: Provider.of<TheamProvider>(context, listen: true)
+                .theamChange
+                .isDark,
+            onChanged: (val) {
+              Provider.of<TheamProvider>(context, listen: false).ChangeTheam();
+            },
+          ),
+        ],
       ),
       body: Stack(
         children: [
@@ -70,6 +84,7 @@ class _CH1State extends State<CH1> {
                         gujarati: allData[i].gujarati,
                         hindi: allData[i].hindi,
                       );
+                      shlokIndex = i;
                       Navigator.pushNamed(
                         context,
                         'vd',

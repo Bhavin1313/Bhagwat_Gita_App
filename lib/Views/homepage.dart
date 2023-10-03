@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '../Model/all_chapter_moddel.dart';
+import '../Provider/theamprovider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,6 +24,16 @@ class _HomePageState extends State<HomePage> {
           "श्रीमद् भगवद्गीता",
         ),
         centerTitle: true,
+        actions: [
+          Switch(
+            value: Provider.of<TheamProvider>(context, listen: true)
+                .theamChange
+                .isDark,
+            onChanged: (val) {
+              Provider.of<TheamProvider>(context, listen: false).ChangeTheam();
+            },
+          ),
+        ],
       ),
       body: Stack(
         children: [
